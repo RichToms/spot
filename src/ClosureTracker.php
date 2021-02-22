@@ -8,13 +8,6 @@ use RichToms\Spot\Contracts\Tracker as TrackerContract;
 class ClosureTracker implements TrackerContract
 {
     /**
-     * The subject of the tracker.
-     *
-     * @var \Closure
-     */
-    protected $subject;
-
-    /**
      * List of all events in this tracking session.
      *
      * @var array
@@ -37,12 +30,10 @@ class ClosureTracker implements TrackerContract
      */
     public function __construct(Closure $subject, $params = [])
     {
-        $this->subject = $subject;
-
         $start = microtime(true);
         $memBefore = memory_get_usage();
 
-        $this->result = $this->subject(...$params);
+        $this->result = $subject(...$params);
 
         $this->events[] = [
             'method' => 'Closure',
