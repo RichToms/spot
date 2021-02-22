@@ -112,7 +112,7 @@ class ClassTrackerTest extends TestCase
     }
 
     /** @test */
-    public function itTracksTheMemoryInUseWhenTheProcessStartedAndEnded()
+    public function itTracksTheMemoryInUseWhenEachMethodStartedAndEnded()
     {
         $tracker = new ClassTracker(new ExampleClass());
         $tracker->run();
