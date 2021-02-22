@@ -2,12 +2,14 @@
 
 namespace RichToms\Spot;
 
-class Tracker
+use Closure;
+
+class ClosureTracker
 {
     /**
      * The subject of the tracker.
      *
-     * @var mixed
+     * @var \Closure
      */
     protected $subject;
 
@@ -19,7 +21,7 @@ class Tracker
     protected $events = [];
 
     /**
-     * The current result of the latest call.
+     * The result of the latest call.
      *
      * @var mixed
      */
@@ -28,29 +30,21 @@ class Tracker
     /**
      * Create a new instance of the tracker.
      *
-     * @param  mixed  $subject
+     * @param  \Closure  $subject
+     * @param  array  $params
      * @return void
      */
-    public function __construct($subject)
+    public function __construct(Closure $subject, $params = [])
     {
         $this->subject = $subject;
-    }
 
-    /**
-     * Forward any calls to the tracker to the subject.
-     *
-     * @param  string  $method
-     * @param  array  $params
-     * @return $this
-     */
-    public function __call($method, $params)
-    {
         $start = microtime(true);
         $memBefore = memory_get_usage();
 
-        $this->result = $this->subject->{$method}(... $params);
+        $this->result = $this->subject(...$params);
+
         $this->events[] = [
-            'method' => $method,
+            'method' => 'Closure',
             'params' => $params,
             'timing' => [
                 'start' => $start,
@@ -59,9 +53,7 @@ class Tracker
             'memory' => [
                 'start' => $memBefore,
                 'end' => memory_get_usage(),
-            ],
+            ]
         ];
-
-        return $this;
     }
 }
