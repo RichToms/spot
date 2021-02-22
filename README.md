@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/richtoms/spot.svg?style=flat-square)](https://packagist.org/packages/richtoms/spot)
 [![Build Status](https://img.shields.io/travis/richtoms/spot/master.svg?style=flat-square)](https://travis-ci.org/richtoms/spot)
-[![Quality Score](https://img.shields.io/scrutinizer/g/richtoms/spot.svg?style=flat-square)](https://scrutinizer-ci.com/g/richtoms/spot)
 [![Total Downloads](https://img.shields.io/packagist/dt/richtoms/spot.svg?style=flat-square)](https://packagist.org/packages/richtoms/spot)
 
 SPOT is a small library designed to track timing and memory usage of your PHP functions and class methods.
