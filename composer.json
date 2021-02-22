@@ -1,0 +1,41 @@
+{
+    "name": "richtoms/spot",
+    "description": "Simple PHP Object Tracker",
+    "keywords": [
+        "spot"
+    ],
+    "homepage": "https://github.com/richtoms/spot",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Richard Toms",
+            "email": "richard@toms.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RichToms\\Spot\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RichToms\\Spot\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
