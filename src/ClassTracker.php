@@ -2,7 +2,9 @@
 
 namespace RichToms\Spot;
 
-class ClassTracker
+use RichToms\Spot\Contracts\Tracker as TrackerContract;
+
+class ClassTracker implements TrackerContract
 {
     /**
      * The subject of the tracker.
@@ -63,5 +65,25 @@ class ClassTracker
         ];
 
         return $this;
+    }
+
+    /**
+     * Retrieve a list of all events.
+     *
+     * @return array
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Retrieve the known result of the tracker.
+     *
+     * @return mixed
+     */
+    public function getResult()
+    {
+        return $this->result;
     }
 }

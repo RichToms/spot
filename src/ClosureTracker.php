@@ -3,8 +3,9 @@
 namespace RichToms\Spot;
 
 use Closure;
+use RichToms\Spot\Contracts\Tracker as TrackerContract;
 
-class ClosureTracker
+class ClosureTracker implements TrackerContract
 {
     /**
      * The subject of the tracker.
@@ -55,5 +56,25 @@ class ClosureTracker
                 'end' => memory_get_usage(),
             ]
         ];
+    }
+
+    /**
+     * Retrieve a list of all events.
+     *
+     * @return array
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Retrieve the known result of the tracker.
+     *
+     * @return mixed
+     */
+    public function getResult()
+    {
+        return $this->result;
     }
 }
